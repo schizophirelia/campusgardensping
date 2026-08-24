@@ -1,0 +1,44 @@
+# Save this file as .github/workflows/campus_gardens_watch.yml in a (private) GitHub repo
+# that also contains watch_campus_gardens.py.
+#
+# Setup:
+#   1. Create a private GitHub repo, add watch_campus_gardens.py to it.
+#   2. In the repo settings -> Secrets and variables -> Actions, add:
+#        TELEGRAM_BOT_TOKEN
+#        TELEGRAM_CHAT_ID
+#   3. Commit this workflow file. GitHub will run it automatically on the schedule below,
+#      completely free (public repos: unlimited; private repos: within the free minutes quota,
+#      which easily covers a check every 15 min).
+#   4. state.json will be committed back to the repo after each run so the script remembers
+#      the previous free-count and only notifies on genuine changes.
+
+name: Watch Campus Gardens Heidelberg
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch: {}       # lets you trigger it manually from the Actions tab
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run watcher
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python watch_campus_gardens.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "cg-watcher-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || git commit -m "Update state [skip ci]"
+          git push
