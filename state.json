@@ -1,22 +1,6 @@
 {
-  "A": {
-    "occupied": 130,
-    "reserved": 0,
-    "free": 1,
-  },
-  "B": {
-    "occupied": 70,
-    "reserved": 1,
-    "free": 0
-  },
-  "C": {
-    "occupied": 98,
-    "reserved": 1,
-    "free": 0
-  },
-  "D": {
-    "occupied": 70,
-    "reserved": 0,
-    "free": 0
-  }
+  "A": {"occupied": 130, "reserved": 0, "free": 0},
+  "B": {"occupied": 70, "reserved": 1, "free": 0},
+  "C": {"occupied": 98, "reserved": 1, "free": 0},
+  "D": {"occupied": 70, "reserved": 0, "free": 0}
 }
