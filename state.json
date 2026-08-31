@@ -6,8 +6,8 @@
   },
   "B": {
     "occupied": 70,
-    "reserved": 0,
-    "free": 1
+    "reserved": 1,
+    "free": 0
   },
   "C": {
     "occupied": 99,
