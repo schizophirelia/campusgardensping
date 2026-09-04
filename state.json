@@ -10,9 +10,9 @@
     "free": 0
   },
   "C": {
-    "occupied": 99,
+    "occupied": 98,
     "reserved": 0,
-    "free": 0
+    "free": 1
   },
   "D": {
     "occupied": 70,
