@@ -16,7 +16,7 @@
   },
   "D": {
     "occupied": 69,
-    "reserved": 1,
-    "free": 0
+    "reserved": 0,
+    "free": 1
   }
 }
