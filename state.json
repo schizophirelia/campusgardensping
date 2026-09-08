@@ -1,8 +1,8 @@
 {
   "A": {
-    "occupied": 130,
+    "occupied": 129,
     "reserved": 0,
-    "free": 0
+    "free": 1
   },
   "B": {
     "occupied": 70,
